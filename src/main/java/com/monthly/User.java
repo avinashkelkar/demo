@@ -3,10 +3,12 @@ package com.monthly;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 /**
  * Created by avinashk on 27/1/17.
  */
+@NamedQuery(name = "User.findByMobNum", query = "SELECT u FROM User u WHERE u.mobileNumber = ?1")
 @Entity
 public class User {
 

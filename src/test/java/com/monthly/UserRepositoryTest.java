@@ -1,5 +1,6 @@
 package com.monthly;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,17 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByLastName() {
-        User customer = new User("first", "last","789");
-        entityManager.persist(customer);
+        User user = new User("234", "avinash","789");
+        entityManager.persist(user);
 
-        User findByLastName = users.findByName(customer.getName());
+        User findByLastName = users.findByName(user.getName());
 
-        assertThat(Collections.singletonList(findByLastName)).extracting(User::getName).containsOnly(customer.getName());
+        assertThat(Collections.singletonList(findByLastName)).extracting(User::getName).containsOnly(user.getName());
+
+        User byMobileNumber = users.findByMobileNumber(user.getMobileNumber());
+        Assert.assertEquals( "789", byMobileNumber.getMobileNumber());
+
+        byMobileNumber = users.findByMobNum(user.getMobileNumber());
+        Assert.assertEquals( "789", byMobileNumber.getMobileNumber());
     }
 }
