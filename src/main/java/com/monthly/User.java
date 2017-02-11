@@ -17,7 +17,7 @@ public class User {
 
     private String name;
 
-    @Column(name="mobile_number")
+    @Column(name = "mobile_number")
     private String mobileNumber;
 
     public String getId() {
